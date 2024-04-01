@@ -1,23 +1,34 @@
 import Script from "next/script";
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
+import * as stores from "@/data/store_data.json";
 
 declare global {
   interface Window {
     kakao: any;
   }
 }
-export default function Map() {
+
+const DEFAULT_LAT = 37.497625203;
+
+const DEFAULT_LNG = 127.03088379;
+
+interface MapProps {
+  setMap: Dispatch<SetStateAction<any>>;
+}
+export default function Map({ setMap }: MapProps) {
   const loadKakaoMap = () => {
     // kakao로드
 
     window.kakao.maps.load(() => {
       const mapContainer = document.getElementById("map");
       const mapOption = {
-        center: new window.kakao.maps.LatLng(33.450701, 126.570667),
+        center: new window.kakao.maps.LatLng(DEFAULT_LAT, DEFAULT_LNG),
         level: 3,
       };
 
-      new window.kakao.maps.Map(mapContainer, mapOption);
+      const map = new window.kakao.maps.Map(mapContainer, mapOption);
+
+      setMap(map);
     });
   };
 
