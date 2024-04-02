@@ -1,7 +1,8 @@
 import React, { Dispatch, SetStateAction } from "react";
 import Image from "next/image";
+import { StoreType } from "@/interface";
 interface storeBoxProps {
-  store: any;
+  store: StoreType;
   setStore: Dispatch<SetStateAction<any>>;
 }
 
@@ -21,17 +22,17 @@ export default function StoreBox({ store, setStore }: storeBoxProps) {
                   width={80}
                   height={80}
                   src={
-                    store?.bizcnd_code_nm
-                      ? `/images/markers/${store?.bizcnd_code_nm}.png`
+                    store?.category
+                      ? `/images/markers/${store?.category}.png`
                       : `/images/markers/default.png`
                   }
                 ></Image>
                 <div className="flex flex-col justify-start w-full  gap-1">
                   <span className="md:text-xl text-lg font-bold ">
-                    {store?.upso_nm}
+                    {store?.name}
                   </span>
                   <span className="md:text-xl text-lg text-slate-400 font-bold">
-                    {store?.cob_code_nm}
+                    {store?.storeType}
                   </span>
                 </div>
 
@@ -44,7 +45,7 @@ export default function StoreBox({ store, setStore }: storeBoxProps) {
                 <span className="text-xl ">
                   🏳
                   <span className="font-bold ml-2 text-sm md:text-xl">
-                    {store?.rdn_code_nm}
+                    {store?.address}
                   </span>
                 </span>
 
@@ -54,21 +55,21 @@ export default function StoreBox({ store, setStore }: storeBoxProps) {
               <div className="  gap-4 flex w-full  ">
                 <span className="text-xl"> 🤳</span>
                 <span className="md:text-xl text:sm font-bold ">
-                  {store?.tel_no}
+                  {store?.phone}
                 </span>
               </div>
 
               <div className="w-full my-4 flex flex-row gap-2">
                 <div>🥚</div>
                 <div className="text-slate-500 font-bold md:text-base">
-                  {store?.crtfc_gbn_nm}
+                  {store?.storeType}
                 </div>
               </div>
 
               <div className="w-full flex flex-row gap-3 ">
                 <div>✔</div>
                 <div className="font-bold text-slate-500 text-base">
-                  {store?.bizcnd_code_nm}
+                  {store?.category}
                 </div>
               </div>
             </div>

@@ -19,28 +19,28 @@ export default function StoreListPage({ stores }: { stores: StoreType[] }) {
                 width={48}
                 height={48}
                 src={
-                  item?.bizcnd_code_nm
-                    ? `/images/markers/${item?.bizcnd_code_nm}.png`
+                  item?.category
+                    ? `/images/markers/${item?.category}.png`
                     : `/images/markers/default.png`
                 }
               />
               <div>
                 <div className="text-sm font-semibold text-gray-900 leading-9">
-                  {item?.upso_nm}
+                  {item?.name}
                 </div>
                 <div className="text-sm font-semibold text-slate-500 leading-5">
-                  {item?.upso_nm}
+                  {item?.storeType}
                 </div>
               </div>
             </div>
 
             <div className="hidden sm:flex sm:flex-col sm:items-end">
               <div className="text-sm font-semibold leading-6 text-gray-900">
-                {item?.rdn_code_nm}
+                {item?.address}
               </div>
               <div className="mt-1 text-xs font-semibold text-gray-500 leading-5">
-                {item?.tel_no || "번호없음"} | {item?.crtfc_gbn_nm} |{" "}
-                {item?.bizcnd_code_nm}
+                {item?.phone || "번호없음"} | {item?.foodCertifyName} |{" "}
+                {item?.category}
               </div>
             </div>
           </li>
